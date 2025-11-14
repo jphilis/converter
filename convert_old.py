@@ -10,3 +10,11 @@ def convert_to_custom_module(module: torch.nn.Module, module_name: str):
     if isinstance(module, torch.nn.Sigmoid):
         return Sigmoid(name=module_name)
     raise NotImplementedError
+
+
+# SOLID principles
+# S: Single Responsibility Principle - Is broken since the function both handles conversion logic and type checking.
+# O: Open/Closed Principle - Is broken because adding new module types requires modifying the existing function.
+# L: Liskov Substitution Principle - Seems fine as the function can accept any subclass of torch.nn.Module.
+# I: Interface Segregation Principle - Does not really apply?
+# D: Dependency Inversion Principle - Is broken since the function depends directly on concrete implementations of torch.nn.Module subclasses.

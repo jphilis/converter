@@ -30,3 +30,12 @@ def convert_to_custom_module(module: torch.nn.Module, module_name: str):
             return converter(module, module_name)
     raise NotImplementedError(f"No converter registered for module.")    
     # raise ValueError("No converter registered for module.") # For testing purposes
+
+def main():
+    # Example usage
+    torch_module = torch.nn.ReLU()
+    custom_module = convert_to_custom_module(torch_module, "example_relu")
+    print(custom_module)
+
+if __name__ == "__main__":
+    main()
